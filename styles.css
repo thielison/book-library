@@ -1,5 +1,7 @@
 :root {
     --body-font: 'Raleway', sans-serif;
+    --light-white: #fffbfb;
+    --light-gray: #f0eef1;
 }
 
 * {
@@ -11,5 +13,58 @@
 body, html {
     font-family: var(--body-font);
     line-height: 1.5;
-    background-color: #e9ecef;
+    background-color: var(--light-gray);
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 100px 100px 1fr 100px;
+}
+
+/* Header */
+.header {
+    background-color: var(--light-white);
+}
+
+.header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: max(45%, 400px);
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* + Add book */
+.add-book-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max(45%, 400px);
+    margin: 0 auto;
+}
+
+/* Central Book Cards */
+.book-cards-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max(45%, 400px);
+    margin: 0 auto;
+}
+
+.book-cards-container div {
+    width: 100px;
+    height: 100px;
+    background-color: var(--light-white);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--light-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
