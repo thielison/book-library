@@ -1,23 +1,8 @@
-const bookCards = document.querySelector(".book-cards-container");
+const bookCardsContainer = document.querySelector(".book-cards-container");
 const addBookButton = document.querySelector("#add-book-button");
 const bookInfoForm = document.querySelector(".form-container");
 
 let myLibrary = [];
-
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
-
-Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`;
-};
-
-function addBookToLibrary(book) {
-    myLibrary.push(book);
-}
 
 function displayForm() {
     if (bookInfoForm.style.display == "block") {
@@ -36,8 +21,36 @@ function handleClickOutsideForm(event) {
     }
 }
 
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
+
+function addBookToLibrary(book) {
+    myLibrary.push(book);
+}
+
+function getFormData(form) {
+    const formData = new FormData(form);
+    const title = formData.get("title");
+    const author = formData.get("author");
+    const pages = formData.get("pages");
+    const read = formData.get("read");
+
+    const book = new Book(title, author, pages, read);
+    addBookToLibrary(book);
+
+    form.reset(); // reset form after submit
+    bookInfoForm.style.display = "none"; // hide form after submit
+}
+
+document.getElementById("input-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // prevent submit input to send the data to a server by default
+    getFormData(e.target);
+});
+
 addBookButton.addEventListener("click", displayForm);
 
 document.addEventListener("click", handleClickOutsideForm);
-
-// const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");

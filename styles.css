@@ -47,6 +47,7 @@ body, html {
 
 /* Form for user input */
 .form-container {
+    background-color: var(--light-white);
     display: none;
     position: absolute;
     width: 400px;
@@ -57,6 +58,7 @@ body, html {
     top: 0;
     bottom: 0;
     margin: auto;
+    box-shadow: 0px 0px 0px 100vw rgba(0, 0, 0, 0.500); /* background is black when form is active */
 }
 
 .form-container > #input-form {
@@ -67,16 +69,17 @@ body, html {
 
 /* Central Book Cards */
 .book-cards-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: max(50%, 300px);
     margin: 0 auto;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    align-content: start;
 }
 
 .book-cards-container div {
-    width: 100px;
-    height: 100px;
+    height: 300px;
     background-color: var(--light-white);
 }
 
