@@ -21,16 +21,34 @@
                     <button type="button">Log in</button>
                 </div>
             </div>
+
+            <div class="form-container book-data user-input">
+                <form action="" id="input-form">
+                    <div>
+                        <input type="text" name="title" id="book-title" placeholder="Title" />
+                    </div>
+                    <div>
+                        <input type="text" name="author" id="book-author" placeholder="Author" />
+                    </div>
+                    <div>
+                        <input type="number" name="pages" id="book-pages" placeholder="pages" />
+                    </div>
+                    <div>
+                        <label for="read-checkbox">Have you read it?</label>
+                        <input type="checkbox" name="read" id="read-checkbox" />
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="add-book-button">
-                <button type="submit">+ Add book</button>
+                <button type="button" id="add-book-button">+ Add book</button>
             </div>
-            <div class="book-cards-container">
-                <div>Card 1</div>
-                <div>Card 2</div>
-                <div>Card 3</div>
-                <div>Card 4</div>
-                <div>Card 5</div>
-            </div>
+
+            <div class="book-cards-container"></div>
+
             <div class="footer">
                 <p>
                     A book library using <em>Object Constructors</em> for

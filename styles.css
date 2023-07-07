@@ -31,7 +31,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: max(45%, 400px);
+    width: max(50%, 300px);
     height: 100%;
     margin: 0 auto;
 }
@@ -41,8 +41,28 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: max(45%, 400px);
+    width: max(50%, 300px);
     margin: 0 auto;
+}
+
+/* Form for user input */
+.form-container {
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 450px;
+    border: 5px solid red;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.form-container > #input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
 }
 
 /* Central Book Cards */
@@ -50,7 +70,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: max(45%, 400px);
+    width: max(50%, 300px);
     margin: 0 auto;
 }
 
