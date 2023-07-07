@@ -45,6 +45,10 @@ body, html {
     margin: 0 auto;
 }
 
+.add-book-button button {
+    font-size: 1.5rem;
+}
+
 /* Form for user input */
 .form-container {
     background-color: var(--light-white);
@@ -79,8 +83,26 @@ body, html {
 }
 
 .book-cards-container div {
-    height: 300px;
+    height: 280px;
     background-color: var(--light-white);
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 0.7rem;
+}
+
+.book-cards-container div > button {
+    background-color: var(--light-gray);
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    border-radius: 0.7rem;
 }
 
 /* Footer */
