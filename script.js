@@ -1,25 +1,9 @@
 const bookCardsContainer = document.querySelector(".book-cards-container");
 const addBookButton = document.querySelector("#add-book-button");
-const bookInfoForm = document.querySelector(".form-container");
+const formContainer = document.querySelector(".form-container");
+const userInputForm = document.getElementById("input-form");
 
 let myLibrary = [];
-
-function displayForm() {
-    if (bookInfoForm.style.display == "block") {
-        return;
-    } else {
-        bookInfoForm.style.display = "block";
-    }
-}
-
-function handleClickOutsideForm(event) {
-    // hide the form if the click event does not occur on the "addBookButton" element
-    // or any element within the "bookInfoForm" container
-
-    if (event.target !== addBookButton && !bookInfoForm.contains(event.target)) {
-        bookInfoForm.style.display = "none";
-    }
-}
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -31,10 +15,11 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
     myLibrary.push(book);
 
-    addNewBookCardDiv(book.title, book.author, book.pages, book.read);
+    let lastBookAddedToMyLibrary = myLibrary.slice(-1);
+    addNewBookCardDiv(lastBookAddedToMyLibrary[0]);
 }
 
-function addNewBookCardDiv(title, author, pages, read) {
+function addNewBookCardDiv(book) {
     const newDiv = document.createElement("div");
     const titlePara = document.createElement("p");
     const authorPara = document.createElement("p");
@@ -42,19 +27,15 @@ function addNewBookCardDiv(title, author, pages, read) {
     const readNotReadButton = document.createElement("button");
     const removeButton = document.createElement("button");
 
-    titlePara.textContent = title;
-    authorPara.textContent = author;
-    pagesPara.textContent = pages;
+    // Set the text content of the elements based on the LAST BOOK ADDED to myLibrary array
+    titlePara.textContent = book.title;
+    authorPara.textContent = book.author;
+    pagesPara.textContent = book.pages;
+    readNotReadButton.textContent = book.read === "on" ? "Read" : "Not read";
     removeButton.textContent = "Remove";
 
-    if (read === "on") {
-        readNotReadButton.textContent = "Read";
-    } else {
-        readNotReadButton.textContent = "Not read";
-    }
-
     newDiv.append(titlePara, authorPara, pagesPara, readNotReadButton, removeButton);
-    bookCardsContainer.appendChild(newDiv);
+    bookCardsContainer.appendChild(newDiv); // Append the new book card to the container
 }
 
 function getFormData(form) {
@@ -68,10 +49,27 @@ function getFormData(form) {
     addBookToLibrary(book);
 
     form.reset(); // reset form after submit
-    bookInfoForm.style.display = "none"; // hide form after submit
+    formContainer.style.display = "none"; // hide form after submit
 }
 
-document.getElementById("input-form").addEventListener("submit", function (e) {
+function displayForm() {
+    if (formContainer.style.display == "block") {
+        return;
+    }
+
+    formContainer.style.display = "block";
+}
+
+function handleClickOutsideForm(event) {
+    // hide the form if the click event does not occur on the "addBookButton" element
+    // or any element within the "bookInfoForm" container
+
+    if (event.target !== addBookButton && !formContainer.contains(event.target)) {
+        formContainer.style.display = "none";
+    }
+}
+
+userInputForm.addEventListener("submit", function (e) {
     e.preventDefault(); // prevent submit input to send the data to a server by default
     getFormData(e.target);
 });
