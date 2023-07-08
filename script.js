@@ -30,6 +30,31 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+
+    addNewBookCardDiv(book.title, book.author, book.pages, book.read);
+}
+
+function addNewBookCardDiv(title, author, pages, read) {
+    const newDiv = document.createElement("div");
+    const titlePara = document.createElement("p");
+    const authorPara = document.createElement("p");
+    const pagesPara = document.createElement("p");
+    const readNotReadButton = document.createElement("button");
+    const removeButton = document.createElement("button");
+
+    titlePara.textContent = title;
+    authorPara.textContent = author;
+    pagesPara.textContent = pages;
+    removeButton.textContent = "Remove";
+
+    if (read === "on") {
+        readNotReadButton.textContent = "Read";
+    } else {
+        readNotReadButton.textContent = "Not read";
+    }
+
+    newDiv.append(titlePara, authorPara, pagesPara, readNotReadButton, removeButton);
+    bookCardsContainer.appendChild(newDiv);
 }
 
 function getFormData(form) {
