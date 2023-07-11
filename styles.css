@@ -79,24 +79,75 @@ body, html {
 
 /* Form for user input */
 .form-container {
-    background-color: var(--light-white);
+    background-color: var(--light-gray);
     display: none;
     position: absolute;
-    width: 400px;
-    height: 450px;
-    border: 5px solid red;
+    width: 300px;
+    height: 390px;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
     box-shadow: 0px 0px 0px 100vw rgba(0, 0, 0, 0.500); /* background is black when form is active */
+    border-radius: 0.7rem;
+   
 }
 
 .form-container > #input-form {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+    height: 100%;
+    padding: 1.3rem;
+}
+
+.form-container > #input-form div {
+    width: 100%;
+}
+
+.form-container > #input-form div:first-child {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.form-container > #input-form input,
+.form-container > #input-form button {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.8rem 0.8rem;
+    border-radius: 0.7rem;
+    border: none;
+}
+
+.form-container > #input-form input::placeholder {
+    font-size: 1.2rem;
+}
+
+.form-container > #input-form button {
+    background-color: white;
+    transition: 0.5s;
+}
+
+.form-container > #input-form button:hover {
+    cursor: pointer;
+    background-color: var(--dark-gray);
+}
+
+.form-container > #input-form div:nth-of-type(5) {
+    width: 75%;
+    display: flex;
+    gap: 1.3rem;
+}
+
+.form-container > #input-form div:nth-of-type(5) label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    flex-shrink: 0;
 }
 
 /* Central Book Cards */
