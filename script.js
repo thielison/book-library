@@ -54,6 +54,10 @@ function changeReadStatus(e) {
     e.textContent === "Read" ? (e.textContent = "Not read") : (e.textContent = "Read");
 }
 
+function removeBookFromLibrary(e) {
+    e.parentElement.remove();
+}
+
 function getFormData(form) {
     const formData = new FormData(form);
     const title = formData.get("title");

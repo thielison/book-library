@@ -2,6 +2,7 @@
     --body-font: 'Raleway', sans-serif;
     --light-white: #fffbfb;
     --light-gray: #f0eef1;
+    --dark-gray: #c0c0c0;
 }
 
 * {
@@ -20,6 +21,7 @@ body, html {
     display: grid;
     height: 100vh;
     grid-template-rows: 100px 100px 1fr 100px;
+    gap: 2rem;
 }
 
 /* Header */
@@ -36,6 +38,21 @@ body, html {
     margin: 0 auto;
 }
 
+.header-container button {
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 0.7rem;
+    background-color: var(--light-gray);
+    transition: 0.3s;
+}
+
+.header-container button:hover {
+    background-color: var(--dark-gray);
+    cursor: pointer;
+}
+
 /* + Add book */
 .add-book-button {
     display: flex;
@@ -47,6 +64,17 @@ body, html {
 
 .add-book-button button {
     font-size: 1.5rem;
+    padding: 0.7rem 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.7rem;
+    background-color: var(--light-white);
+    transition: 0.3s;
+}
+
+.add-book-button button:hover {
+    background-color: var(--dark-gray);
+    cursor: pointer;
 }
 
 /* Form for user input */
@@ -86,13 +114,17 @@ body, html {
     height: 280px;
     background-color: var(--light-white);
     font-size: 20px;
-    font-weight: 700;
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
     border-radius: 0.7rem;
+}
+
+.book-cards-container div > p:nth-of-type(1) {
+    font-weight: 700;
 }
 
 .book-cards-container div > button {
