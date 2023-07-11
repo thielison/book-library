@@ -21,21 +21,37 @@ function addBookToLibrary(book) {
 
 function addNewBookCardDiv(book) {
     const newDiv = document.createElement("div");
+    newDiv.classList = `book #${myLibrary.length}`;
+
     const titlePara = document.createElement("p");
+    titlePara.textContent = `"${book.title}"`;
+
     const authorPara = document.createElement("p");
-    const pagesPara = document.createElement("p");
-    const readNotReadButton = document.createElement("button");
-    const removeButton = document.createElement("button");
-
-    // Set the text content of the elements based on the LAST BOOK ADDED to myLibrary array
-    titlePara.textContent = book.title;
     authorPara.textContent = book.author;
-    pagesPara.textContent = book.pages;
-    readNotReadButton.textContent = book.read === "on" ? "Read" : "Not read";
-    removeButton.textContent = "Remove";
 
-    newDiv.append(titlePara, authorPara, pagesPara, readNotReadButton, removeButton);
+    const pagesPara = document.createElement("p");
+    pagesPara.textContent = `${book.pages} pages`;
+
+    const readStatusButton = document.createElement("button");
+    readStatusButton.classList.add("read-status");
+    readStatusButton.textContent = book.read === "on" ? "Read" : "Not read";
+    readStatusButton.addEventListener("click", (e) => {
+        changeReadStatus(e.target);
+    });
+
+    const removeBookButton = document.createElement("button");
+    removeBookButton.classList.add("remove-book");
+    removeBookButton.textContent = "Remove";
+    removeBookButton.addEventListener("click", (e) => {
+        removeBookFromLibrary(e.target);
+    });
+
+    newDiv.append(titlePara, authorPara, pagesPara, readStatusButton, removeBookButton);
     bookCardsContainer.appendChild(newDiv); // Append the new book card to the container
+}
+
+function changeReadStatus(e) {
+    e.textContent === "Read" ? (e.textContent = "Not read") : (e.textContent = "Read");
 }
 
 function getFormData(form) {
@@ -77,3 +93,8 @@ userInputForm.addEventListener("submit", function (e) {
 addBookButton.addEventListener("click", displayForm);
 
 document.addEventListener("click", handleClickOutsideForm);
+
+const testBook = new Book("The Hobbit", "J. R. R. Tolkien", 304, null);
+const testBook2 = new Book("The Book Thief", "Markus Zusak", 552, "on");
+addBookToLibrary(testBook);
+addBookToLibrary(testBook2);
