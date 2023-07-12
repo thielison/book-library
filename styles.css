@@ -20,7 +20,7 @@ body, html {
 .container {
     display: grid;
     height: 100vh;
-    grid-template-rows: 100px 100px 1fr 100px;
+    grid-template-rows: 100px 100px 1fr 50px;
     gap: 2rem;
 }
 
@@ -215,9 +215,22 @@ body, html {
 
 /* Footer */
 .footer {
-    background-color: var(--light-white);
+    font-size: 1.2rem;
+    font-weight: 700;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.footer #github-symbol {
+    position: relative;
+    top: 4px;
+    left: 6px;
+    width: 1.5rem;
+    transition: 0.5s;
+}
+
+.footer #github-symbol:hover {
+    transform: rotate(720deg) scale(1.2);
 }
