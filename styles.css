@@ -179,13 +179,38 @@ body, html {
 }
 
 .book-cards-container div > button {
-    background-color: var(--light-gray);
     font-size: 20px;
     font-weight: 500;
     width: 100%;
     padding: 0.5rem 0;
     border: none;
     border-radius: 0.7rem;
+}
+
+.book-cards-container .book > .not-read {
+    background-color: #e56b6f;
+}
+
+.book-cards-container .book > .not-read:hover {
+    background-color: #bb5559;
+}
+
+.book-cards-container .book > .read {
+    background-color: #2ec4b6;
+}
+
+.book-cards-container .book > .read:hover {
+    background-color: #25a094;
+}
+
+.book-cards-container .book > .not-read:hover, 
+.book-cards-container .book > .read:hover {
+    cursor: pointer;
+}
+
+.book-cards-container .book > .remove-book:hover {
+    background-color: var(--dark-gray);
+    cursor: pointer;
 }
 
 /* Footer */

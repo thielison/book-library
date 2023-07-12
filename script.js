@@ -33,8 +33,13 @@ function addNewBookCardDiv(book) {
     pagesPara.textContent = `${book.pages} pages`;
 
     const readStatusButton = document.createElement("button");
-    readStatusButton.classList.add("read-status");
-    readStatusButton.textContent = book.read === "on" ? "Read" : "Not read";
+    if (book.read === "on") {
+        readStatusButton.classList = "read-status read";
+        readStatusButton.textContent = "Read";
+    } else {
+        readStatusButton.classList = "read-status not-read";
+        readStatusButton.textContent = "Not Read";
+    }
     readStatusButton.addEventListener("click", (e) => {
         changeReadStatus(e.target);
     });
@@ -51,7 +56,9 @@ function addNewBookCardDiv(book) {
 }
 
 function changeReadStatus(e) {
-    e.textContent === "Read" ? (e.textContent = "Not read") : (e.textContent = "Read");
+    const isRead = e.textContent === "Read";
+    e.textContent = isRead ? "Not read" : "Read";
+    e.classList = `read-status ${isRead ? "not-read" : "read"}`;
 }
 
 function removeBookFromLibrary(e) {
