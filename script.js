@@ -1,7 +1,4 @@
-const bookCardsContainer = document.querySelector(".book-cards-container");
-const addBookButton = document.querySelector("#add-book-button");
 const formContainer = document.querySelector(".form-container");
-const userInputForm = document.getElementById("input-form");
 
 const Book = class {
     constructor(title, author, pages, read) {
@@ -51,7 +48,7 @@ const Book = class {
         });
 
         newDiv.append(titlePara, authorPara, pagesPara, readStatusButton, removeBookButton);
-        bookCardsContainer.appendChild(newDiv); // Append the new book card to the container
+        document.querySelector(".book-cards-container").appendChild(newDiv); // Append the new book card to the container
     }
 
     static changeReadStatus(e) {
@@ -109,23 +106,23 @@ const UserForm = class {
         formContainer.style.display = "block";
     }
 
-    // hide the form if the click event does not occur on the "addBookButton" element
+    // hide the form if the click event does not occur on the "+ Add Book" button element
     // or any element within the "bookInfoForm" container
-    static handleClickOutsideForm(event) {
-        if (event.target !== addBookButton && !formContainer.contains(event.target)) {
+    static handleClickOutsideForm(e) {
+        if (e.target !== document.getElementById("add-book-button") && !formContainer.contains(e.target)) {
             formContainer.style.display = "none";
         }
     }
 };
 
-userInputForm.addEventListener("submit", (e) => {
+document.getElementById("input-form").addEventListener("submit", (e) => {
     e.preventDefault(); // prevent submit input to send the data to a server by default
     UserForm.getFormData(e.target);
 });
 
-addBookButton.addEventListener("click", UserForm.displayForm);
+document.getElementById("add-book-button").addEventListener("click", UserForm.displayForm);
 
-document.addEventListener("click", UserForm.handleClickOutsideForm);
+document.addEventListener("click", (e) => UserForm.handleClickOutsideForm(e));
 
 const library = new Library();
 
