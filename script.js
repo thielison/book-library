@@ -1,5 +1,11 @@
 const formContainer = document.querySelector(".form-container");
 
+// Constraint Validation API
+const form = document.getElementById("input-form");
+const bookTitle = document.getElementById("book-title");
+const bookAuthor = document.getElementById("book-author");
+const bookPages = document.getElementById("book-pages");
+
 const Book = class {
     constructor(title, author, pages, read) {
         this.title = title;
@@ -115,10 +121,33 @@ const UserForm = class {
     }
 };
 
-document.getElementById("input-form").addEventListener("submit", (e) => {
-    e.preventDefault(); // prevent submit input to send the data to a server by default
-    UserForm.getFormData(e.target);
-});
+// Constraint Validation API
+const validateForm = (event) => {
+    event.preventDefault(); // prevent submit input to send the data to a server by default
+
+    const fields = [bookPages, bookAuthor, bookTitle];
+    const messages = [
+        "You have to add the number of pages in the book!",
+        "I'm expecting an author name in this field!",
+        "I'm expecting a book title in this field!",
+    ];
+
+    // If true, form is valid
+    if (form.checkValidity()) {
+        UserForm.getFormData(event.target);
+    } else {
+        fields.forEach((field, index) => {
+            if (field.validity.valueMissing) {
+                field.setCustomValidity(messages[index]);
+            } else {
+                field.setCustomValidity("");
+            }
+            field.reportValidity();
+        });
+    }
+};
+
+form.addEventListener("submit", validateForm);
 
 document.getElementById("add-book-button").addEventListener("click", UserForm.displayForm);
 
